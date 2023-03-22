@@ -1,0 +1,78 @@
+.full-screen-card {
+  background: linear-gradient(to right, #8e2de2, #4a00e0);
+  color: white;
+  height: 100vh;
+}
+
+.full-screen-card h1 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.full-screen-card p {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  font-family: "Kalam", cursive;
+}
+.mobile-lists ul > li {
+  display: inline-block;
+  margin-right: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  background-color: rgb(1, 1, 1);
+  color: yellow;
+}
+.mobile-icon {
+  padding-right: 5px;
+}
+.product-btn {
+  font-size: 18px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+.product-btn:hover {
+  background-color: rgb(3, 3, 3);
+}
+.description-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.description-sub-div {
+  text-align: start;
+}
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .Home-icons {
+    width: 20px;
+    height: 20px;
+  }
+  .Home-icons-title {
+    font-size: 10px;
+  }
+  .Home-icons-card {
+    width: 80px;
+    height: 70px;
+  }
+  .full-screen-card p {
+    font-size: 14px;
+    line-height: normal;
+  }
+  .full-screen-card h1 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+  .mobile-lists ul > li {
+    font-size: 12px;
+    display: inline-flex;
+  }
+  .product-btn {
+    font-size: 16px;
+    padding: 5px;
+    letter-spacing: 1px;
+  }
+}
