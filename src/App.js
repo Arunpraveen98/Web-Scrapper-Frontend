@@ -6,6 +6,7 @@ import Base from "./Components/Base_Component/Base";
 import Dashboard from "./Components/Route/Home";
 
 function App() {
+ 
   return (
     <div className="App">
       <BrowserRouter>

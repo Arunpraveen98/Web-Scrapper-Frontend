@@ -28,7 +28,7 @@ const Snapdeal_Data = ({ searchValue }) => {
       } else {
         setloader(false);
         const Get_Snapdeal_Data = await axios.get(
-          `${process.env.REACT_APP_EXPRESS_SERVER}/Snapdeal_Products_List`
+          `${process.env.REACT_APP_EXPRESS_SERVER}Snapdeal_Products_List`
         );
         // console.log(Get_Amazon_Data.data);
         setSnapdealData(Get_Snapdeal_Data.data.slice(0, 10));

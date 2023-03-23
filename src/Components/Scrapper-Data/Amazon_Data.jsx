@@ -29,7 +29,7 @@ const Amazon_Data = ({ searchValue }) => {
       } else {
         setloader(false);
         const Get_Amazon_Data = await axios.get(
-          `${process.env.REACT_APP_EXPRESS_SERVER}/Amazon_Products_List`
+          `${process.env.REACT_APP_EXPRESS_SERVER}Amazon_Products_List`
         );
         // console.log(Get_Amazon_Data.data);
         setAmazonData(Get_Amazon_Data.data.slice(0, 10));
