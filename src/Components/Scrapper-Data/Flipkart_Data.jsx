@@ -3,23 +3,25 @@ import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 
 const Flipkart_Data = ({ searchValue }) => {
+  //? React Hooks..
   const [FlipkartData, setFlipkartData] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
   const [loader, setloader] = useState(false);
-
+  // ---------------------------
   const productsPerPage = 3;
   const pagesVisited = pageNumber * productsPerPage;
-
+  // ---------------------------
+  //? useEffect Hook...
   useEffect(() => {
     Scrap_Flipkart_Data();
   }, [searchValue.length >= 4 || searchValue.length == 0]);
-
+  // ---------------------------
   async function Scrap_Flipkart_Data() {
     try {
       if (`${searchValue}`) {
         setloader(false);
         const Get_Flipkart_Data = await axios.get(
-          `https://web-scrapper-e-commerce.onrender.com/Flipkart_Products_List?name=${searchValue}`
+          `${process.env.REACT_APP_EXPRESS_SERVER}/Flipkart_Products_List?name=${searchValue}`
         );
         // console.log(Get_Flipkart_Data.data);
         setFlipkartData(Get_Flipkart_Data.data);
@@ -27,7 +29,7 @@ const Flipkart_Data = ({ searchValue }) => {
       } else {
         setloader(false);
         const Get_Flipkart_Data = await axios.get(
-          `https://web-scrapper-e-commerce.onrender.com/Flipkart_Products_List`
+          `${process.env.REACT_APP_EXPRESS_SERVER}/Flipkart_Products_List`
         );
         // console.log(Get_Amazon_Data.data);
         setFlipkartData(Get_Flipkart_Data.data.slice(0, 10));
@@ -38,7 +40,7 @@ const Flipkart_Data = ({ searchValue }) => {
       console.log(error);
     }
   }
-
+  // ---------------------------
   const displayProducts = FlipkartData.slice(
     pagesVisited,
     pagesVisited + productsPerPage
@@ -90,13 +92,12 @@ const Flipkart_Data = ({ searchValue }) => {
       </div>
     );
   });
-
+  // ---------------------------
   const pageCount = Math.ceil(FlipkartData.length / productsPerPage);
-
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
-
+  // ---------------------------
   return (
     <div className="Flipkart-div">
       <h2 className="store-title">FLIPKART STORE</h2>

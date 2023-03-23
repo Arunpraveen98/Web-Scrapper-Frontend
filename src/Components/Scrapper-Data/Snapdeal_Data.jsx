@@ -3,13 +3,15 @@ import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 
 const Snapdeal_Data = ({ searchValue }) => {
+  //? React Hooks..
   const [SnapdealData, setSnapdealData] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
   const [loader, setloader] = useState(false);
-
+  // ---------------------------
   const productsPerPage = 4;
   const pagesVisited = pageNumber * productsPerPage;
-
+  // ---------------------------
+  //? useEffect Hook...
   useEffect(() => {
     Scrap_Snapdeal_Data();
   }, [searchValue.length >= 4 || searchValue.length == 0]);
@@ -18,7 +20,7 @@ const Snapdeal_Data = ({ searchValue }) => {
       if (`${searchValue}`) {
         setloader(false);
         const Get_Snapdeal_Data = await axios.get(
-          `https://web-scrapper-e-commerce.onrender.com/Snapdeal_Products_List?name=${searchValue}`
+          `${process.env.REACT_APP_EXPRESS_SERVER}/Snapdeal_Products_List?name=${searchValue}`
         );
         // console.log(Get_Flipkart_Data.data);
         setSnapdealData(Get_Snapdeal_Data.data);
@@ -26,7 +28,7 @@ const Snapdeal_Data = ({ searchValue }) => {
       } else {
         setloader(false);
         const Get_Snapdeal_Data = await axios.get(
-          `https://web-scrapper-e-commerce.onrender.com/Snapdeal_Products_List`
+          `${process.env.REACT_APP_EXPRESS_SERVER}/Snapdeal_Products_List`
         );
         // console.log(Get_Amazon_Data.data);
         setSnapdealData(Get_Snapdeal_Data.data.slice(0, 10));
@@ -37,7 +39,7 @@ const Snapdeal_Data = ({ searchValue }) => {
       console.log(error);
     }
   }
-
+  // ---------------------------
   const displayProducts = SnapdealData.slice(
     pagesVisited,
     pagesVisited + productsPerPage
@@ -83,13 +85,12 @@ const Snapdeal_Data = ({ searchValue }) => {
       </div>
     );
   });
-
+  // ---------------------------
   const pageCount = Math.ceil(SnapdealData.length / productsPerPage);
-
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
-
+  // ---------------------------
   return (
     <div className="Flipkart-div">
       <h2 className="store-title">SNAPDEAL STORE</h2>

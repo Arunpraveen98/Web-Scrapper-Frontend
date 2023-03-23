@@ -3,21 +3,25 @@ import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 
 const Amazon_Data = ({ searchValue }) => {
+  //? React Hooks...
   const [AmazonData, setAmazonData] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
   const [loader, setloader] = useState(false);
+  // ---------------------------
   const productsPerPage = 3;
   const pagesVisited = pageNumber * productsPerPage;
-
+  // ---------------------------
+  //? useEffect Hook...
   useEffect(() => {
     Scrap_Amazon_Data();
   }, [searchValue.length >= 4 || searchValue.length == 0]);
+  // ---------------------------
   async function Scrap_Amazon_Data() {
     try {
       if (`${searchValue}`) {
         setloader(false);
         const Get_Amazon_Data = await axios.get(
-          `https://web-scrapper-e-commerce.onrender.com/Amazon_Products_List?name=${searchValue}`
+          `${process.env.REACT_APP_EXPRESS_SERVER}/Amazon_Products_List?name=${searchValue}`
         );
         // console.log(Get_Amazon_Data.data);
         setAmazonData(Get_Amazon_Data.data);
@@ -25,7 +29,7 @@ const Amazon_Data = ({ searchValue }) => {
       } else {
         setloader(false);
         const Get_Amazon_Data = await axios.get(
-          `https://web-scrapper-e-commerce.onrender.com/Amazon_Products_List`
+          `${process.env.REACT_APP_EXPRESS_SERVER}/Amazon_Products_List`
         );
         // console.log(Get_Amazon_Data.data);
         setAmazonData(Get_Amazon_Data.data.slice(0, 10));
@@ -36,7 +40,7 @@ const Amazon_Data = ({ searchValue }) => {
       console.log(error);
     }
   }
-
+  // ---------------------------
   const displayProducts = AmazonData.slice(
     pagesVisited, //1)=>(0 , 0 + 4 = 4)| 2) => (4 , 4 + 4 = 8)
     pagesVisited + productsPerPage
@@ -74,13 +78,13 @@ const Amazon_Data = ({ searchValue }) => {
       </div>
     );
   });
+  // ---------------------------
   const pageCount = Math.ceil(AmazonData.length / productsPerPage);
-
   const changePage = ({ selected }) => {
     setPageNumber(selected);
     // console.log(selected);
   };
-
+  // ---------------------------
   return (
     <>
       <div className="Flipkart-div">

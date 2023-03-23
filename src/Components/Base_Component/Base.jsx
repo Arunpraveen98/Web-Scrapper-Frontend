@@ -6,14 +6,16 @@ import { Link } from "react-router-dom";
 import Amazon_Data from "../Scrapper-Data/Amazon_Data";
 import Flipkart_Data from "../Scrapper-Data/Flipkart_Data";
 import Snapdeal_Data from "../Scrapper-Data/Snapdeal_Data";
-
 import "../NavBar/Navbar.css";
+
 const Base = () => {
   const [searchValue, setSearchValue] = useState("");
+
   return (
     <>
       <div className="container-fluid">
         <div className="row">
+          {/* ---------------------------  */}
           <nav className="navbar">
             <div className="navbar-logo">
               <ul className="navbar-links">
@@ -43,6 +45,7 @@ const Base = () => {
           </nav>
         </div>
       </div>
+      {/* ---------------------------  */}
       <div className="container mt-3">
         <div className="col-sm-12">
           <div className="row">
@@ -66,6 +69,7 @@ const Base = () => {
           </div>
         </div>
       </div>
+      {/* ---------------------------  */}
     </>
   );
 };
