@@ -32,7 +32,7 @@ const Flipkart_Data = ({ searchValue }) => {
       } else {
         setloader(false);
         const Get_Flipkart_Data = await axios.get(
-          `${process.env.REACT_APP_EXPRESS_SERVER}Flipkart_Products_List`
+          `${process.env.REACT_APP_EXPRESS_SERVER}/Flipkart_Products_List`
         );
         // console.log(Get_Amazon_Data.data);
         setFlipkartData(Get_Flipkart_Data.data.slice(0, 10));
