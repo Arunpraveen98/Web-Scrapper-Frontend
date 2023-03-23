@@ -18,9 +18,6 @@ const Flipkart_Data = ({ searchValue }) => {
   // ---------------------------
   async function Scrap_Flipkart_Data() {
     try {
-      console.log(
-        `${process.env.REACT_APP_EXPRESS_SERVER}Flipkart_Products_List`
-      );
       if (`${searchValue}`) {
         setloader(false);
         const Get_Flipkart_Data = await axios.get(
