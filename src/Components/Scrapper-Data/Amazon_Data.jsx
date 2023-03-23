@@ -48,7 +48,7 @@ const Amazon_Data = ({ searchValue }) => {
     return (
       <div className="card mb-5" key={index}>
         <div className="row g-2">
-          <div className="col-md-5 p-2 img-card">
+          <div className="col-md-5 p-2 img-card shadow-inset-center">
             <img
               src={item.image}
               style={{ width: "220px", height: "220px" }}
