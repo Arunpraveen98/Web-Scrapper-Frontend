@@ -2,14 +2,32 @@ import React, { useState } from "react";
 import { AiFillAmazonSquare } from "react-icons/ai";
 import { FaHome, FaSnapchat } from "react-icons/fa";
 import { SiFlipkart } from "react-icons/si";
+import { FiLogOut } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import Amazon_Data from "../Scrapper-Data/Amazon_Data";
 import Flipkart_Data from "../Scrapper-Data/Flipkart_Data";
 import Snapdeal_Data from "../Scrapper-Data/Snapdeal_Data";
+import { useNavigate } from "react-router-dom";
 import "../NavBar/Navbar.css";
+import { toast } from "react-toastify";
 
 const Base = () => {
+  const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState("");
+
+  //? React toastify for Success...
+  const success = (message) => {
+    toast.success(`${message}`, {
+      position: "top-center",
+      autoClose: true,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: 1,
+      theme: "dark",
+    });
+  };
 
   return (
     <>
@@ -20,7 +38,20 @@ const Base = () => {
             <div className="navbar-logo">
               <ul className="navbar-links">
                 <li>
-                  <Link to={"/"}>
+                  <div
+                    className="logout-tooltip"
+                    onClick={() => {
+                      window.localStorage.removeItem("Student_Data");
+                      success("👍Successfully logged out");
+                      navigate("/");
+                    }}
+                  >
+                    <FiLogOut className="logout" />
+                    <span className="tooltiptext">Logout</span>
+                  </div>
+                </li>
+                <li>
+                  <Link to={"/Dashboard"}>
                     <FaHome /> Home
                   </Link>
                 </li>

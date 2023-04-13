@@ -57,7 +57,6 @@
 .navbar-links li:last-child {
   margin-right: 0;
 }
-
 .navbar-links a {
   text-decoration: wavy;
   color: rgba(255, 255, 255, 0.952);
@@ -70,6 +69,44 @@
   letter-spacing: 2px;
 }
 
+/* ------------------- */
+.logout {
+  color: #fff;
+  width: 35px;
+  height: 35px;
+  background-color: black;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Tooltip text */
+.logout-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.logout-tooltip .tooltiptext {
+  visibility: hidden;
+  width: 50px;
+  font-size: 10px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  border-radius: 6px;
+
+  position: relative;
+  top: 30px;
+  left: 0px;
+  margin-left: -30px;
+}
+
+.logout-tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+/* ------------------- */
 .navbar-search {
   display: flex;
   align-items: center;
