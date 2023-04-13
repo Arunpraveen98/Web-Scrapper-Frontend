@@ -92,8 +92,7 @@ const User_Register = () => {
         // -----------------------------
         //? POST Student Registered Data
         const Post_Student_Registration = await axios.post(
-          // `${process.env.REACT_APP_EXPRESS_SERVER}/User-Registration`,
-          `http://localhost:8000/User-Registration`,
+          `${process.env.REACT_APP_EXPRESS_SERVER}/User-Registration`,
           values
         );
         // -----------------------------
